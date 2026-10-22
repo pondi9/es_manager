@@ -1,46 +1,150 @@
+```html
 <!DOCTYPE html>
-<html>
+<html lang="pl">
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
   <base href="$FLUTTER_BASE_HREF">
 
   <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 
-  <!-- iOS meta tags & icons -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101820">
+
+  <meta name="description" content="Electric Systems — profesjonalne instalacje elektryczne w szkołach, szpitalach, biurach, budynkach publicznych i domach. Rzeszów i Podkarpacie. Profesjonalnie z energią.">
+
+  <meta name="keywords" content="Electric Systems, instalacje elektryczne, elektryk Rzeszów, instalacje elektryczne Rzeszów, modernizacja rozdzielni, pomiary elektryczne, monitoring, fotowoltaika">
+
+  <meta name="author" content="Electric Systems Marcin Kiczek">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pl_PL">
+  <meta property="og:site_name" content="Electric Systems">
+  <meta property="og:title" content="Electric Systems | Profesjonalnie z energią">
+  <meta property="og:description" content="Profesjonalne instalacje elektryczne dla budynków publicznych, firm i domów. Skontaktuj się z Electric Systems.">
+  <meta property="og:url" content="https://electric-systems.pl/">
+
   <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="es_manager">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Electric Systems">
+
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
-
-  <title>es_manager</title>
+  <link rel="icon" type="image/png" href="favicon.png">
   <link rel="manifest" href="manifest.json">
-</head>
-<body>
-  <!--
-    You can customize the "flutter_bootstrap.js" script.
-    This is useful to provide a custom configuration to the Flutter loader
-    or to give the user feedback during the initialization process.
 
-    For more details:
-    * https://docs.flutter.dev/platform-integration/web/initialization
-  -->
+  <title>Electric Systems | Profesjonalnie z energią</title>
+
+  <style>
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: #101820;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    #es-loading {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(ellipse at top, #203746 0%, #101820 65%);
+      color: #ffffff;
+      z-index: 9999;
+      transition: opacity .35s ease;
+    }
+
+    .es-loading-content {
+      text-align: center;
+      padding: 28px;
+    }
+
+    .es-mark {
+      width: 68px;
+      height: 68px;
+      margin: 0 auto 22px;
+      border: 2px solid #f5b82e;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      font-weight: 800;
+      color: #f5b82e;
+      letter-spacing: -2px;
+      box-shadow: 0 0 35px rgba(245, 184, 46, .12);
+    }
+
+    .es-brand {
+      margin: 0;
+      font-size: clamp(27px, 6vw, 40px);
+      font-weight: 800;
+      letter-spacing: 1.5px;
+    }
+
+    .es-tagline {
+      margin: 10px 0 28px;
+      color: #c5d0d8;
+      font-size: 15px;
+      letter-spacing: .5px;
+    }
+
+    .es-progress {
+      width: 150px;
+      height: 3px;
+      margin: auto;
+      overflow: hidden;
+      border-radius: 5px;
+      background: #33434f;
+    }
+
+    .es-progress::after {
+      content: "";
+      display: block;
+      width: 45%;
+      height: 100%;
+      background: #f5b82e;
+      animation: es-progress 1.2s ease-in-out infinite;
+    }
+
+    @keyframes es-progress {
+      from { transform: translateX(-110%); }
+      to { transform: translateX(340%); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .es-progress::after {
+        animation: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="es-loading" role="status" aria-label="Ładowanie Electric Systems">
+    <div class="es-loading-content">
+      <div class="es-mark" aria-hidden="true">ES</div>
+      <h1 class="es-brand">ELECTRIC SYSTEMS</h1>
+      <p class="es-tagline">Profesjonalnie z energią.</p>
+      <div class="es-progress" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('flutter-first-frame', function () {
+      var loading = document.getElementById('es-loading');
+      if (loading) {
+        loading.style.opacity = '0';
+        window.setTimeout(function () {
+          loading.remove();
+        }, 400);
+      }
+    });
+  </script>
+
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
+```
